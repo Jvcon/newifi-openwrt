@@ -19,6 +19,9 @@ sed -i 's/OpenWrt/NewifiD2/g' package/base-files/files/bin/config_generate
 # Modify the version number
 sed -i "s/OpenWrt /Jacques build $(TZ=UTC-8 date "+%Y.%m.%d") @ OpenWrt /g" package/lean/default-settings/files/zzz-default-settings
 
+# Modify default theme
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+
 # Add kernel build user
 [ -z $(grep "CONFIG_KERNEL_BUILD_USER=" .config) ] &&
     echo 'CONFIG_KERNEL_BUILD_USER="Jacques"' >>.config ||
